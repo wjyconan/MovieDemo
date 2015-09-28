@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		ivPopSelect.setOnClickListener(this);
 	}
 
-	
+
 	private void init() {
 		retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(baseUrl).build();
 		service = retrofit.create(MovieService.class);
@@ -122,32 +122,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		moviesCall.enqueue(new Callback<Movies>() {
 			@Override
 			public void onResponse(Response<Movies> response) {
-				if (response == null) {
-					Toast.makeText(MainActivity.this, "加载失败,请稍后重试...", Toast.LENGTH_SHORT).show();
-				} else {
-					Log.e("=========", response.body().results.get(0).poster_path);
-					posterPathList = new ArrayList<>();
-					titleList = new ArrayList<>();
-					overviewList = new ArrayList<>();
-					voteList = new ArrayList<>();
-					releaseList = new ArrayList<>();
-					voteCount = new ArrayList<>();
-					for (int i = 0; i < response.body().results.size(); i++) {
-						posterPathList.add(response.body().results.get(i).poster_path);
-						overviewList.add(response.body().results.get(i).overview);
-						titleList.add(response.body().results.get(i).title);
-						voteList.add(response.body().results.get(i).vote_average);
-						voteCount.add(response.body().results.get(i).vote_count);
-						releaseList.add(response.body().results.get(i).release_date);
-					}
-					gvMovies.setAdapter(new GridViewAdapter(MainActivity.this, posterPathList));
-				}
-			}
 
+				Log.e("=========", response.body().results.get(0).poster_path);
+				posterPathList = new ArrayList<>();
+				titleList = new ArrayList<>();
+				overviewList = new ArrayList<>();
+				voteList = new ArrayList<>();
+				releaseList = new ArrayList<>();
+				voteCount = new ArrayList<>();
+				for (int i = 0; i < response.body().results.size(); i++) {
+					posterPathList.add(response.body().results.get(i).poster_path);
+					overviewList.add(response.body().results.get(i).overview);
+					titleList.add(response.body().results.get(i).title);
+					voteList.add(response.body().results.get(i).vote_average);
+					voteCount.add(response.body().results.get(i).vote_count);
+					releaseList.add(response.body().results.get(i).release_date);
+				}
+				gvMovies.setAdapter(new GridViewAdapter(MainActivity.this, posterPathList));
+			}
+			
 
 			@Override
 			public void onFailure(Throwable t) {
 				Log.e("+++++++", t.toString());
+				Toast.makeText(MainActivity.this, t.toString(), Toast.LENGTH_LONG).show();
 			}
 		});
 	}
