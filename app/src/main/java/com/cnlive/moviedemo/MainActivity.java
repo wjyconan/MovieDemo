@@ -61,16 +61,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		ButterKnife.bind(this);
 
 		init();
+		initPopupWindowView();
 		getPopSort();
 		setAllClick();
-		initPopupWindowView();
 
 
 	}
 
+	/**
+	 * 初始化popupwindow
+	 * 功能:menu菜单
+	 */
 	private void initPopupWindowView() {
 		View view = getLayoutInflater().inflate(R.layout.item_popup_windows, null, false);
-		popupWindow = new PopupWindow(view, 100, 120);
+		popupWindow = new PopupWindow(view, 100, 200);
 
 		view.setOnTouchListener(this);
 
@@ -79,28 +83,41 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	}
 
 
+	/**
+	 * 设置所有的点击监听
+	 */
 	private void setAllClick() {
 		gvMovies.setOnItemClickListener(this);
 		ivPopSelect.setOnClickListener(this);
 	}
 
+	
 	private void init() {
 		retrofit = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(baseUrl).build();
 		service = retrofit.create(MovieService.class);
 
 	}
 
+	/**
+	 * 按照最流行获得数据
+	 */
 	private void getPopSort() {
 
 		moviesCall = service.getMovies(popSort, apiKey);
 		getData();
 	}
 
+	/**
+	 * 按照最高评分获得数据
+	 */
 	private void getVoteSort() {
 		moviesCall = service.getMovies(voteSort, apiKey);
 		getData();
 	}
 
+	/**
+	 * 获取数据
+	 */
 	private void getData() {
 		moviesCall.enqueue(new Callback<Movies>() {
 			@Override

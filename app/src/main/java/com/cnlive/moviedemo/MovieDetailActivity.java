@@ -53,7 +53,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 		Bundle bundle = intent.getExtras();
 		tvTitle.setText(bundle.getString("title"));
 		tvReleaseDate.setText(bundle.getString("release"));
-		tvOverview.setText(bundle.getString("overview"));
+		tvOverview.setText("OverView:   "+bundle.getString("overview"));
 		tvVoteCount.setText(bundle.getString("voteCount"));
 		tvVoteAverage.setText(bundle.getString("vote"));
 		sdvPoster.setImageURI(Uri.parse("http://image.tmdb.org/t/p/w185" + bundle.getString("poster")));
