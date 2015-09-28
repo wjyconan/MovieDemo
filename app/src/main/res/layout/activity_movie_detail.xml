@@ -4,7 +4,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context="com.cnlive.moviedemo.MovieDetailActivity">
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -90,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="评分:"
+            android:layout_marginTop="10dp"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="#000"
@@ -125,15 +125,15 @@
             android:textStyle="bold"
             android:textColor="#000"
             android:textSize="20dp"
+            android:id="@+id/textView2"
             android:layout_below="@+id/tv1"
-            android:layout_toRightOf="@+id/tv_release_date"
-            android:layout_toEndOf="@+id/tv_release_date"
-            android:id="@+id/textView2"/>
+            android:layout_alignLeft="@+id/tv1"
+            android:layout_alignStart="@+id/tv1"
+            android:layout_marginTop="10dp"/>
         <TextView
             android:id="@+id/tv_vote_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10000"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_alignBottom="@+id/textView2"

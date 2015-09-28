@@ -50,7 +50,7 @@ public class Movies {
 		public String title;
 		public boolean video;
 		public String vote_average;
-		public int vote_count;
+		public String vote_count;
 		public List<Integer> genre_ids;
 	}
 }

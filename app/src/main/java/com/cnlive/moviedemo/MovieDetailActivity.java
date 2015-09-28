@@ -30,6 +30,8 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 	TextView tvVoteAverage;
 	@Bind(R.id.tv_overview)
 	TextView tvOverview;
+	@Bind(R.id.tv_vote_count)
+	TextView tvVoteCount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 		Fresco.initialize(this);
 		setContentView(R.layout.activity_movie_detail);
 		ButterKnife.bind(this);
-		
+
 		initView();
 		setAllClick();
 	}
@@ -50,17 +52,19 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 		Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
 		tvTitle.setText(bundle.getString("title"));
-		tvReleaseDate.setText( bundle.getString("release"));
+		tvReleaseDate.setText(bundle.getString("release"));
 		tvOverview.setText(bundle.getString("overview"));
+		tvVoteCount.setText(bundle.getString("voteCount"));
 		tvVoteAverage.setText(bundle.getString("vote"));
-		sdvPoster.setImageURI(Uri.parse("http://image.tmdb.org/t/p/w185"+bundle.getString("poster")));
+		sdvPoster.setImageURI(Uri.parse("http://image.tmdb.org/t/p/w185" + bundle.getString("poster")));
+		
 
 	}
 
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()){
+		switch (v.getId()) {
 			case R.id.iv_back:
 				finish();
 				break;
