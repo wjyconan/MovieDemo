@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	private void initPopupWindowView() {
 		View view = getLayoutInflater().inflate(R.layout.item_popup_windows, null, false);
 		popupWindow = new PopupWindow(view, 100, 200);
+		popupWindow.setOutsideTouchable(true);
+		popupWindow.setFocusable(true);
 
 		view.setOnTouchListener(this);
 
