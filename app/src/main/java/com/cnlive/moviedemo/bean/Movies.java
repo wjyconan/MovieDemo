@@ -1,5 +1,6 @@
 package com.cnlive.moviedemo.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Movies {
 	public int total_results;
 	public List<ResultsEntity> results;
 
-	public static class ResultsEntity {
+	public static class ResultsEntity implements Serializable {
 		/**
 		 * adult : false
 		 * backdrop_path : /tbhdm8UJAb4ViCTsulYFL3lxMCd.jpg

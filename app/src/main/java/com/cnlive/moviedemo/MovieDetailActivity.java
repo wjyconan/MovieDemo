@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cnlive.moviedemo.bean.Movies;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -51,12 +52,14 @@ public class MovieDetailActivity extends AppCompatActivity implements View.OnCli
 	private void initView() {
 		Intent intent = getIntent();
 		Bundle bundle = intent.getExtras();
-		tvTitle.setText(bundle.getString("title"));
-		tvReleaseDate.setText(bundle.getString("release"));
-		tvOverview.setText("OverView:   " + bundle.getString("overview"));
-		tvVoteCount.setText(bundle.getString("voteCount"));
-		tvVoteAverage.setText(bundle.getString("vote"));
-		sdvPoster.setImageURI(Uri.parse("http://image.tmdb.org/t/p/w185" + bundle.getString("poster")));
+		Movies.ResultsEntity results = (Movies.ResultsEntity) bundle.getSerializable("results");
+
+		tvTitle.setText(results.title);
+		tvReleaseDate.setText(results.release_date);
+		tvOverview.setText("OverView:   " + results.overview);
+		tvVoteCount.setText(results.vote_count);
+		tvVoteAverage.setText(results.vote_average);
+		sdvPoster.setImageURI(Uri.parse("http://image.tmdb.org/t/p/w185" + results.poster_path));
 
 
 	}

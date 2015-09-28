@@ -4,27 +4,27 @@
                 android:background="#fff">
 
     <TextView
-        android:id="@+id/tv_vote_sort"
+        android:id="@+id/tv_pop_sort"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="按评分"
+        android:text="按流行"
         android:textColor="#000"
         android:textSize="15dp"
         />
 
 
     <TextView
-        android:id="@+id/tv_pop_sort"
+        android:id="@+id/tv_vote_sort"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_vote_sort"
+        android:layout_below="@+id/tv_pop_sort"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="按流行"
+        android:text="按评分"
         android:textColor="#000"
         android:textSize="15dp"/>
 

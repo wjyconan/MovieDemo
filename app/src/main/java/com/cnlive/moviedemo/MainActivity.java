@@ -44,12 +44,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	private MovieService service;
 	private Retrofit retrofit;
 	private Call<Movies> moviesCall;
+	private List<Movies.ResultsEntity> resultsEntityList;
 	private List<String> posterPathList;
-	private List<String> overviewList;
-	private List<String> titleList;
-	private List<String> voteList;
-	private List<String> releaseList;
-	private List<String> voteCount;
 	private PopupWindow popupWindow;
 
 	@Override
@@ -126,19 +122,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 			public void onResponse(Response<Movies> response) {
 
 				Log.e("=========", response.body().results.get(0).poster_path);
+				Log.e("list", String.valueOf(response.body().results.size()));
+
+				resultsEntityList = new ArrayList<Movies.ResultsEntity>();
 				posterPathList = new ArrayList<>();
-				titleList = new ArrayList<>();
-				overviewList = new ArrayList<>();
-				voteList = new ArrayList<>();
-				releaseList = new ArrayList<>();
-				voteCount = new ArrayList<>();
+				resultsEntityList = response.body().results;
+
 				for (int i = 0; i < response.body().results.size(); i++) {
-					posterPathList.add(response.body().results.get(i).poster_path);
-					overviewList.add(response.body().results.get(i).overview);
-					titleList.add(response.body().results.get(i).title);
-					voteList.add(response.body().results.get(i).vote_average);
-					voteCount.add(response.body().results.get(i).vote_count);
-					releaseList.add(response.body().results.get(i).release_date);
+					posterPathList.add(resultsEntityList.get(i).poster_path);
 				}
 				gvMovies.setAdapter(new GridViewAdapter(MainActivity.this, posterPathList));
 			}
@@ -156,12 +147,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Intent intent = new Intent(MainActivity.this, MovieDetailActivity.class);
 		Bundle bundle = new Bundle();
-		bundle.putString("title", titleList.get(position));
-		bundle.putString("poster", posterPathList.get(position));
-		bundle.putString("overview", overviewList.get(position));
-		bundle.putString("vote", voteList.get(position));
-		bundle.putString("release", releaseList.get(position));
-		bundle.putString("voteCount", voteCount.get(position));
+		bundle.putSerializable("results", resultsEntityList.get(position));
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
