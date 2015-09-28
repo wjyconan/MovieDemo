@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 				}
 				gvMovies.setAdapter(new GridViewAdapter(MainActivity.this, posterPathList));
 			}
-			
+
 
 			@Override
 			public void onFailure(Throwable t) {

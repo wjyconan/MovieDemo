@@ -15,13 +15,13 @@ import java.util.List;
 /**
  * Created by WJY on 2015/9/26.
  */
-public class GridViewAdapter extends BaseAdapter{
-	
+public class GridViewAdapter extends BaseAdapter {
+
 	private Context context;
 	private List<String> list;
-	private String  baseUrl = "http://image.tmdb.org/t/p/w185";
+	private String baseUrl = "http://image.tmdb.org/t/p/w185";
 
-	public GridViewAdapter(Context context,List<String> list) {
+	public GridViewAdapter(Context context, List<String> list) {
 		this.context = context;
 		this.list = list;
 	}
@@ -43,22 +43,22 @@ public class GridViewAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder mHolder ;
-		if (convertView == null){
+		ViewHolder mHolder;
+		if (convertView == null) {
 			mHolder = new ViewHolder();
 			LayoutInflater inflater = LayoutInflater.from(context);
-			convertView = inflater.inflate(R.layout.item_gridview_img,null,true);
+			convertView = inflater.inflate(R.layout.item_gridview_img, null, true);
 			mHolder.my_image_view = (SimpleDraweeView) convertView.findViewById(R.id.my_image_view);
 			convertView.setTag(mHolder);
-		}else {
+		} else {
 			mHolder = (ViewHolder) convertView.getTag();
 		}
-		Uri uri = Uri.parse(baseUrl+list.get(position));
+		Uri uri = Uri.parse(baseUrl + list.get(position));
 		mHolder.my_image_view.setImageURI(uri);
 		return convertView;
 	}
-	
-	class ViewHolder{
+
+	class ViewHolder {
 		private SimpleDraweeView my_image_view;
 	}
 }

@@ -11,5 +11,5 @@ import retrofit.http.Query;
  */
 public interface MovieService {
 	@GET("3/discover/movie?%20")
-	Call<Movies> getMovies(@Query("sort_by") String sort_by,@Query("api_key") String api_key);
+	Call<Movies> getMovies(@Query("sort_by") String sort_by, @Query("api_key") String api_key);
 }
