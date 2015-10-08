@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cnlive.moviedemo.adapter.GridViewAdapter;
@@ -29,14 +27,14 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, View.OnTouchListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-	@Bind(R.id.iv_more)
-	ImageView ivPopSelect;
+	//	@Bind(R.id.iv_more)
+//	ImageView ivPopSelect;
 	@Bind(R.id.gv_movies)
 	GridView gvMovies;
-	@Bind(R.id.tv_sort_title)
-	TextView tvSortTitle;
+	//	@Bind(R.id.tv_sort_title)
+//	TextView tvSortTitle;
 	private String baseUrl = "https://api.themoviedb.org/";
 	private String apiKey = "062da0340d7cec6489f68575cc629c42";
 	private String popSort = "popularity.desc";
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	private Call<Movies> moviesCall;
 	private List<Movies.ResultsEntity> resultsEntityList;
 	private List<String> posterPathList;
-	private PopupWindow popupWindow;
+//	private PopupWindow popupWindow;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,29 +54,50 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		ButterKnife.bind(this);
 
 		init();
-		initPopupWindowView();
+//		initPopupWindowView();
 		getPopSort();
 		setAllClick();
 
 
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.pop_sort:
+				getPopSort();
+				break;
+			case R.id.best_sort:
+				getVoteSort();
+				break;
+
+		}
+		return super.onContextItemSelected(item);
+	}
+
 	/**
 	 * 初始化popupwindow
 	 * 功能:menu菜单
 	 */
-	private void initPopupWindowView() {
-		View view = getLayoutInflater().inflate(R.layout.item_popup_windows, null, false);
-		popupWindow = new PopupWindow(view, 100, 200);
-		//实现外部点击关闭PopupWindow
-		popupWindow.setOutsideTouchable(true);
-		popupWindow.setFocusable(true);
-
-		view.setOnTouchListener(this);
-
-		view.findViewById(R.id.tv_pop_sort).setOnClickListener(this);
-		view.findViewById(R.id.tv_vote_sort).setOnClickListener(this);
-	}
+//	private void initPopupWindowView() {
+//		View view = getLayoutInflater().inflate(R.layout.item_popup_windows, null, false);
+//		popupWindow = new PopupWindow(view, 100, 200);
+//		//实现外部点击关闭PopupWindow
+//		popupWindow.setOutsideTouchable(true);
+//		popupWindow.setFocusable(true);
+//
+//		view.setOnTouchListener(this);
+//
+//		view.findViewById(R.id.tv_pop_sort).setOnClickListener(this);
+//		view.findViewById(R.id.tv_vote_sort).setOnClickListener(this);
+//	}
 
 
 	/**
@@ -86,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 	 */
 	private void setAllClick() {
 		gvMovies.setOnItemClickListener(this);
-		ivPopSelect.setOnClickListener(this);
+//		ivPopSelect.setOnClickListener(this);
 	}
 
 
@@ -152,38 +171,38 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 		startActivity(intent);
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-			case R.id.iv_more:
-				if (popupWindow != null && popupWindow.isShowing()) {
-					popupWindow.dismiss();
-					popupWindow = null;
-				} else {
-					initPopupWindowView();
-					popupWindow.showAsDropDown(v, 0, 5);
-				}
-				break;
-			case R.id.tv_pop_sort:
-				tvSortTitle.setText("Pop Movies");
-				popupWindow.dismiss();
-				getPopSort();
-				break;
-			case R.id.tv_vote_sort:
-				tvSortTitle.setText("Best Movies");
-				popupWindow.dismiss();
-				getVoteSort();
-				break;
-		}
-	}
-
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		if (popupWindow != null && popupWindow.isShowing()) {
-			popupWindow.dismiss();
-			popupWindow = null;
-		}
-		return false;
-	}
+//	@Override
+//	public void onClick(View v) {
+//		switch (v.getId()) {
+//			case R.id.iv_more:
+//				if (popupWindow != null && popupWindow.isShowing()) {
+//					popupWindow.dismiss();
+//					popupWindow = null;
+//				} else {
+//					initPopupWindowView();
+//					popupWindow.showAsDropDown(v, 0, 5);
+//				}
+//				break;
+//			case R.id.tv_pop_sort:
+//				tvSortTitle.setText("Pop Movies");
+//				popupWindow.dismiss();
+//				getPopSort();
+//				break;
+//			case R.id.tv_vote_sort:
+//				tvSortTitle.setText("Best Movies");
+//				popupWindow.dismiss();
+//				getVoteSort();
+//				break;
 }
+//	}
+
+//	@Override
+//	public boolean onTouch(View v, MotionEvent event) {
+//		if (popupWindow != null && popupWindow.isShowing()) {
+//			popupWindow.dismiss();
+//			popupWindow = null;
+//		}
+//		return false;
+//	}
+
 
