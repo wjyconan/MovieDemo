@@ -32,7 +32,7 @@
             android:gravity="center_vertical"
             android:text="Movie Detail"
             android:textColor="#fff"
-            android:textSize="20dp"/>
+            android:textSize="20sp"/>
 
         <ImageView
             android:id="@+id/iv_more"
@@ -51,7 +51,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
@@ -69,7 +69,7 @@
                     android:paddingLeft="30dp"
                     android:text="Test"
                     android:textColor="#DFF0EE"
-                    android:textSize="30dp"
+                    android:textSize="30sp"
                     />
 
             </RelativeLayout>
@@ -98,7 +98,7 @@
                     android:layout_marginStart="31dp"
                     android:layout_toEndOf="@+id/sdv_poster"
                     android:layout_toRightOf="@+id/sdv_poster"
-                    android:textSize="25dp"/>
+                    android:textSize="20sp"/>
 
                 <TextView
                     android:id="@+id/tv1"
@@ -109,7 +109,7 @@
                     android:layout_below="@+id/tv_release_date"
                     android:layout_marginTop="10dp"
                     android:text="评分:"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -120,7 +120,7 @@
                     android:layout_toEndOf="@+id/tv1"
                     android:layout_toRightOf="@+id/tv1"
                     android:textColor="#000"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -132,7 +132,7 @@
                     android:layout_toRightOf="@+id/tv_vote_average"
                     android:text="/10"
                     android:textColor="#000"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -144,7 +144,7 @@
                     android:layout_below="@+id/tv1"
                     android:layout_marginTop="10dp"
                     android:text="评分人数:"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -155,7 +155,7 @@
                     android:layout_toEndOf="@+id/textView2"
                     android:layout_toRightOf="@+id/textView2"
                     android:textColor="#000"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
 
@@ -174,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="5dp"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     />
 
                 <View
