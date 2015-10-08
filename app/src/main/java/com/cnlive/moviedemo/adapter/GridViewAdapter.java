@@ -55,6 +55,7 @@ public class GridViewAdapter extends BaseAdapter {
 		}
 		Uri uri = Uri.parse(baseUrl + list.get(position));
 		mHolder.my_image_view.setImageURI(uri);
+		mHolder.my_image_view.setAspectRatio(0.66f);
 		return convertView;
 	}
 
